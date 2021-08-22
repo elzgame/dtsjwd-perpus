@@ -1,26 +1,33 @@
-<div id="label-page"><h3>Tampil Data Anggota</h3></div>
+<div id="label-page">
+    <h3>Tampil Data Anggota</h3>
+</div>
 <div id="content">
-	
-	<p id="tombol-tambah-container"><a href="index.php?p=anggota-input" class="tombol">Tambah Anggota</a>
-	<a target="_blank" href="pages/cetak.php"><img src="print.png" height="50px" height="50px"></a>
-	<FORM CLASS="form-inline" METHOD="POST">
-	<div align="right"><form method=post><input type="text" name="pencarian"><input type="submit" name="search" value="search" class="tombol"></form>
-	</FORM>
-	</p>
-	<table id="tabel-tampil">
-		<tr>
-			<th id="label-tampil-no">No</td>
-			<th>ID Anggota</th>
-			<th>Nama</th>
-			<th>Foto</th>
-			<th>Jenis Kelamin</th>
-			<th>Alamat</th>
-			<th id="label-opsi">Opsi</th>
-		</tr>
-		
 
-		
-		<?php
+    <div id="tombol-tambah-container">
+        <a href="index.php?p=anggota-input" class="tombol">Tambah Anggota</a>
+        <a target="_blank" href="pages/cetak.php" class="tombol">Cetak Tabel</a>
+    </div>
+    <!-- <a target="_blank" href="pages/cetak.php"><img src="print.png" height="50px" height="50px"></a> -->
+    <FORM CLASS="form-inline" METHOD="POST">
+        <div align="right">
+            <form method=post><input type="text" name="pencarian"><input type="submit" name="search" value="search"
+                    class="tombol"></form>
+    </FORM>
+    </p>
+    <table id="tabel-tampil">
+        <tr>
+            <th id="label-tampil-no">No</td>
+            <th>ID Anggota</th>
+            <th>Nama</th>
+            <th>Foto</th>
+            <th>Jenis Kelamin</th>
+            <th>Alamat</th>
+            <th id="label-opsi">Opsi</th>
+        </tr>
+
+
+
+        <?php
 		$batas = 5;
 		extract($_GET);
 		if(empty($hal)){
@@ -66,26 +73,33 @@
 			else
 				$foto = $r_tampil_anggota['foto'];
 		?>
-		<tr>
-			<td><?php echo $nomor; ?></td>
-			<td><?php echo $r_tampil_anggota['idanggota']; ?></td>
-			<td><?php echo $r_tampil_anggota['nama']; ?></td>
-			<td><img src="images/<?php echo $foto; ?>" width=70px height=70px></td>
-			<td><?php echo $r_tampil_anggota['jeniskelamin']; ?></td>
-			<td><?php echo $r_tampil_anggota['alamat']; ?></td>
-			<td>
-				<div class="tombol-opsi-container"><a target="_blank" href="pages/cetak_kartu.php?id=<?php echo $r_tampil_anggota['idanggota'];?>" class="tombol">Cetak Kartu</a></div>
-				<div class="tombol-opsi-container"><a href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota'];?>" class="tombol">Edit</a></div>
-				<div class="tombol-opsi-container"><a href="proses/anggota-hapus.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>" onclick = "return confirm ('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="tombol">Hapus</a></div>
-			</td>			
-		</tr>		
-		<?php $nomor++; } 
+        <tr>
+            <td><?php echo $nomor; ?></td>
+            <td><?php echo $r_tampil_anggota['idanggota']; ?></td>
+            <td><?php echo $r_tampil_anggota['nama']; ?></td>
+            <td><img src="images/<?php echo $foto; ?>" width=70px height=70px></td>
+            <td><?php echo $r_tampil_anggota['jeniskelamin']; ?></td>
+            <td><?php echo $r_tampil_anggota['alamat']; ?></td>
+            <td>
+                <div class="tombol-opsi-container"><a target="_blank"
+                        href="pages/cetak_kartu.php?id=<?php echo $r_tampil_anggota['idanggota'];?>"
+                        class="tombol">Cetak Kartu</a></div>
+                <div class="tombol-opsi-container"><a
+                        href="index.php?p=anggota-edit&id=<?php echo $r_tampil_anggota['idanggota'];?>"
+                        class="tombol">Edit</a></div>
+                <div class="tombol-opsi-container"><a
+                        href="proses/anggota-hapus.php?id=<?php echo $r_tampil_anggota['idanggota']; ?>"
+                        onclick="return confirm ('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="tombol">Hapus</a>
+                </div>
+            </td>
+        </tr>
+        <?php $nomor++; } 
 		}
 		else {
 			echo "<tr><td colspan=6>Data Tidak Ditemukan</td></tr>";
-		}?>		
-	</table>
-	<?php
+		}?>
+    </table>
+    <?php
 	if(isset($_POST['pencarian'])){
 	if($_POST['pencarian']!=''){
 		echo "<div style=\"float:left;\">";
@@ -95,14 +109,14 @@
 	}
 	}
 	else{ ?>
-		<div style="float: left;">		
-		<?php
+    <div style="float: left;">
+        <?php
 			$jml = mysqli_num_rows(mysqli_query($db, $queryJml));
 			echo "Jumlah Data : <b>$jml</b>";
-		?>			
-		</div>		
-		<div class="pagination">		
-				<?php
+		?>
+    </div>
+    <div class="pagination">
+        <?php
 				$jml_hal = ceil($jml/$batas);
 				for($i=1; $i<=$jml_hal; $i++){
 					if($i != $hal){
@@ -113,8 +127,8 @@
 					}
 				}
 				?>
-		</div>
-	<?php
+    </div>
+    <?php
 	}
 	?>
 </div>

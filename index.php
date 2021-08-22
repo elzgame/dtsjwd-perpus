@@ -8,7 +8,7 @@ if(isset($_SESSION['sesi'])){
 <html>
 <head>
 	<title>Sistem Informasi Perpustakaan</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body >
 	<div id="container">

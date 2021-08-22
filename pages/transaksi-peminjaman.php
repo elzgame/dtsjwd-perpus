@@ -33,40 +33,12 @@
 		
 		$query = "SELECT * FROM tbtransaksi INNER JOIN tbbuku on tbtransaksi.idbuku = tbbuku.idbuku INNER JOIN tbanggota ON tbtransaksi.idanggota = tbanggota.idanggota LIMIT $posisi, $batas";
 		$queryJml = "SELECT * FROM tbtransaksi";
-		$no = $posisi * 1;
-		// if($_SERVER['REQUEST_METHOD'] == "POST"){
-			// $pencarian = trim(mysqli_real_escape_string($db, $_POST['pencarian']));
-			// if($pencarian != ""){
-				// $sql = "SELECT * FROM tbanggota WHERE nama LIKE '%$pencarian%'
-				// 		OR idanggota LIKE '%$pencarian%'
-				// 		OR jeniskelamin LIKE '%$pencarian%'
-				// 		OR alamat LIKE '%$pencarian%'";
-				
-				// $query = $sql;
-				// $queryJml = $sql;	
-						
-			// }
-			// else {
-				// $query = "SELECT * FROM tbtransaksi INNER JOIN tbbuku on tbtransaksi.idbuku = tbbuku.idbuku INNER JOIN tbanggota ON tbtransaksi.idanggota = tbanggota.idanggota LIMIT $posisi, $batas";
-				// $queryJml = "SELECT * FROM tbtransaksi";
-				// $no = $posisi * 1;
-			// }			
-		// }
-		// else {
-		// 	$query = "SELECT * FROM tbtransaksi INNER JOIN tbbuku on tbtransaksi.idbuku = tbbuku.idbuku INNER JOIN tbanggota ON tbtransaksi.idanggota = tbanggota.idanggota LIMIT $posisi, $batas";
-		// 	$queryJml = "SELECT * FROM tbtransaksi";
-		// 	$no = $posisi * 1;
-		// }
-		
-		//$sql="SELECT * FROM tbtransaksi ORDER BY idtransaksi DESC";
+		$no = $posisi * 1; 
+		 
 		$q_tampil_transaksi = mysqli_query($db, $query);
 		if(mysqli_num_rows($q_tampil_transaksi)>0)
 		{
-		while($r_tampil_transaksi=mysqli_fetch_array($q_tampil_transaksi)){
-			// if(empty($r_tampil_transaksi['foto'])or($r_tampil_transaksi['foto']=='-'))
-			// 	$foto = "admin-no-photo.jpg";
-			// else
-			// 	$foto = $r_tampil_transaksi['foto'];
+		while($r_tampil_transaksi=mysqli_fetch_array($q_tampil_transaksi)){ ;
 		?>
             <tr>
                 <td><?php echo $nomor; ?></td>
@@ -78,11 +50,11 @@
                 <td><?php echo $r_tampil_transaksi['tglpinjam']; ?></td>
                 <td>
                     <div class="tombol-opsi-container"><br><a target="_blank"
-                            href=""
+                            href="pages/cetak_nota.php?id=<?php echo $r_tampil_transaksi['idtransaksi'];?>"
                             class="tombol">Cetak Nota</a></div><br><br>
-                    <div class="tombol-opsi-container"><br><a target="_blank"
-                            href=""
-                            class="tombol">Pengembalian</a></div>
+                    <div class="tombol-opsi-container"><br>
+					<a href="proses/transaksi-pinjaman-hapus.php?id=<?php echo $r_tampil_transaksi['idtransaksi']; ?>" 
+                            onclick="return confirm ('Apakah buku yang di kembalikan sudah benar? status peminjaman selesai')"  class="tombol">Pengembalian</a></div>
                 </td>
             </tr>
             <?php $nomor++; } 
@@ -90,20 +62,10 @@
 		else {
 			echo "<tr><td colspan=6>Data Tidak Ditemukan</td></tr>";
 		}?>
-        </table>
-        <?php
-	if(isset($_POST['pencarian'])){
-	// if($_POST['pencarian']!=''){
-	// 	echo "<div style=\"float:left;\">";
-	// 	$jml = mysqli_num_rows(mysqli_query($db, $queryJml));
-	// 	echo "Data Hasil Pencarian: <b>$jml</b>";
-	// 	echo "</div>";
-	// }
-	}
-	else{ ?>
+        </table> 
         <div style="float: left;">
             <?php
-			$jml = mysqli_num_rows(mysqli_query($db, $queryJml));
+			$jml = mysqli_num_rows(mysqli_query($db, $query));
 			echo "<br>Jumlah Data : <b>$jml</b>";
 		?>
         </div>
@@ -120,8 +82,7 @@
 				}
 				?>
         </div>
-        <?php
-	}
+        <?php 
 	?>
     </div>
 </div>

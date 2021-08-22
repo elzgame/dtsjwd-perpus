@@ -8,9 +8,10 @@
 	else
 		$foto = $r_tampil_anggota['foto'];
 ?>
+<link rel="stylesheet" type="text/css" href="../css/style.css"> 
 <div id="label-page"><h3>Kartu Anggota</h3></div>
 <div id="content">
-	<table id="tabel-input">
+	<table border="1px solid" id="tabel-tampil">
 		<tr>
 			<td class="label-formulir">FOTO</td>
 			<td class="isian-formulir">

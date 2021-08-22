@@ -2,10 +2,10 @@
 include "../koneksi.php";
 
 ?>
-<link rel="stylesheet" type="text/css" href="../style.css">
-<h3>Data Anggota</h3></div>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+<div id="label-page"><h3>Data Anggota</h3></div> 
 <div id="content">
-<table border="1" id="tabel-tampil">
+<table border="1px solid" id="tabel-tampil">
 		<tr>
 			<th id="label-tampil-no">No</th>
 			<th>ID Anggota</th>

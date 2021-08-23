@@ -3,6 +3,7 @@
 </div>
 <div id="content">
 	<p id="tombol-tambah-container"><a href="index.php?p=buku-input" class="tombol">Tambah Buku</a>
+	<a target="_blank" href="proses/cetak-semua-buku.php"><img src="print.png" height="50px" height="50px"></a>
 	<div align="right">
 		</p>
 		<FORM CLASS="form-inline" METHOD="POST">

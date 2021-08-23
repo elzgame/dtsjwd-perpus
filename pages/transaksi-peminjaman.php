@@ -4,6 +4,8 @@
 <div id="content">
 
 	<p id="tombol-tambah-container"><a href="index.php?p=transaksi-input" class="tombol">Transaksi Baru</a>
+	<a target="_blank" href="proses/cetak-semua-transaksi-peminjaman.php"><img src="print.png" height="50px" height="50px"></a>
+
 	<div align="right">
 		</p>
 		<table id="tabel-tampil">
@@ -80,7 +82,7 @@
 						<td><?php echo $r_tampil_transaksi['judulbuku']; ?></td>
 						<td><?php echo $r_tampil_transaksi['tglpinjam']; ?></td>
 						<td>
-							<div class="tombol-opsi-container"><br><a target="_blank" href="" class="tombol">Cetak Nota</a></div><br><br> <br>
+							<div class="tombol-opsi-container"><br><a href="proses/cetak-nota-peminjaman.php?id=<?php echo $r_tampil_transaksi['idtransaksi']; ?>" class="tombol">Cetak Nota</a></div><br><br> <br>
 							<div class="tombol-opsi-container"><a href="proses/buku-pengembalian.php?id=<?php echo $r_tampil_transaksi['idtransaksi']; ?>" onclick="return confirm ('Apakah Anda Yakin Akan Memasukkan Data Ini ke Daftar Pengembalian?')" class="tombol">Pengembalian</a></div>
 						</td>
 					</tr>

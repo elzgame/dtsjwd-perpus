@@ -3,6 +3,8 @@
 </div>
 <div id="content">
 
+	<a target="_blank" href="proses/cetak-semua-transaksi-pengembalian.php"><img src="print.png" height="50px" height="50px"></a>
+
 	<div align="right">
 		</p>
 		<table id="tabel-tampil">

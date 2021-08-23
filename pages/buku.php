@@ -2,7 +2,10 @@
     <h3>Tampil Data Buku Perpustakan</h3>
 </div>
 <div id="content">
- 
+
+	<div id="tombol-tambah-container">
+        <a href="index.php?p=buku-input" class="tombol">Tambah Buku</a> 
+    </div>
     <!-- <a target="_blank" href="pages/cetak.php"><img src="print.png" height="50px" height="50px"></a> -->
     <FORM CLASS="form-inline" METHOD="POST">
         <div align="right">
@@ -19,6 +22,7 @@
             <th>Pengarang</th>
             <th>Penerbit</th>
             <th>Status</th>
+            <th id="label-opsi">Opsi</th>
         </tr>
 
 
@@ -74,6 +78,15 @@
             <td><?php echo $r_tampil_buku['pengarang']; ?></td> 
             <td><?php echo $r_tampil_buku['penerbit']; ?></td> 
             <td><?php echo $r_tampil_buku['status']; ?></td> 
+			<td> 
+                <div class="tombol-opsi-container"><a
+                        href="index.php?p=buku-edit&id=<?php echo $r_tampil_buku['idbuku'];?>"
+                        class="tombol">Edit</a></div>
+                <div class="tombol-opsi-container"><a
+                        href="proses/buku-hapus.php?id=<?php echo $r_tampil_buku['idbuku']; ?>"
+                        onclick="return confirm ('Apakah Anda Yakin Akan Menghapus Data Ini?')" class="tombol">Hapus</a>
+                </div>
+            </td>
         </tr>
         <?php $nomor++; } 
 		}
